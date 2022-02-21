@@ -6,12 +6,18 @@ switcher.addEventListener('click', function() {
   }],
   optionalServices: ['4fafc201-1fb5-459e-8fcc-c5c9c331914b'] // Required to access service later.
 })
-.then(device => { /* … */ })
+.then(device => {
+     console.log(device.name);
+
+     return device.gatt.connect();
+})
+.then(characteristic => {
+  // Reading Battery Level…
+  return characteristic.readValue();
+})
+.then(value => {
+  console.log(value);
+})
 .catch(error => { console.error(error); });
-// navigator.bluetooth.requestDevice({
-//   acceptAllDevices: true,
-//   optionalServices: ['4fafc201-1fb5-459e-8fcc-c5c9c331914b'] // Required to access service later.
-// })
-// .then(device => { /* … */ })
-// .catch(error => { console.error(error); });
+
 });
