@@ -16,7 +16,8 @@ switcher.addEventListener('click', function() {
   return characteristic.readValue();
 })
 .then(value => {
-  console.log(value);
+  document.getElementById('boldStuff').innerHTML = value;
+
 })
 .catch(error => { console.error(error); });
 
